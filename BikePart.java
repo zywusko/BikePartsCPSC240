@@ -13,28 +13,31 @@ public class BikePart
     private double price;
     private double salesPrice;
     private boolean onSale;
+    private int quantity;
     /**
-     * Placeholder constructor for BikePart objects, only requires a name, sets other instance variables to default values.
+     * Placeholder constructor for BikePart objects, sets all values to a default
      */
-    public BikePart(String name)
+    public BikePart()
     {
 
-        this.partName = name;
+        this.partName = "placeholder";
         this.partNumber = 1;
         this.price = 00.00;
         this.salesPrice = 00.00;
         this.onSale = false;
+        this.quantity = 0;
     }
     /**
      * Constructor for a BikePart object where all variables are provided
      */
-    public BikePart(String name, int number, double price, double salesPrice, boolean onSale)
+    public BikePart(String name, int number, double price, double salesPrice, boolean onSale, int quantity)
     {
         this.partName = name;
         this.partNumber = number;
         this.price = price;
         this.salesPrice = salesPrice;
         this.onSale = onSale;
+        this.quantity = quantity;
     }
 
     /**
@@ -144,5 +147,45 @@ public class BikePart
     public void setOnSale(boolean onSale)
     {
         this.onSale = onSale;
+    }
+    
+    
+    /**
+     * Getter, returns the quantity of parts in the system.
+     * @return an int, number of this part in inventory.
+     */
+    public int getQuantity()
+    {
+        return this.quantity;
+    }
+    
+    
+    /**
+     * Setter, changes the quantity of a part in inventory.
+     * @param quantity new quantity of this part 
+     */
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
+    }
+    
+    
+    /**
+     * simple method to increment quantity by 1
+     * 
+     */
+    public void quantityUp()
+    {
+        this.quantity ++;
+    }
+    
+    
+    /**
+     * Simple method to increment quantity by -1
+     * 
+     */
+    public void quantityDown()
+    {
+        this.quantity --;
     }
 }
