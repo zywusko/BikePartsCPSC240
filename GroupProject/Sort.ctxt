@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Sort
+comment0.text=\r\n\ This\ class\ contains\ methods\ related\ to\ sorting.\r\n\r\n\ @author\ ZZywusco\ and\ Abdel\ Hamid\ Shehata\ \r\n\ \r\n
+comment1.params=name
+comment1.target=Sort(java.lang.String)
+comment1.text=\r\n\ Paramaterized\ constructor\ for\ Sort\ objects\r\n\ @param\ name\ String,\ the\ name\ of\ the\ object\r\n
+comment2.params=inventoryList
+comment2.target=java.util.ArrayList\ nameSort(java.util.ArrayList)
+comment2.text=\r\n\ Sorts\ an\ ArrayList\ of\ BikePart\ objects\ by\ name\r\n\r\n\ @param\ inventoryList\ the\ list\ of\ BikePart\ objects\ to\ be\ sorted\r\n\ @return\ an\ ArrayList\ of\ BikePart\ objects\ that\ has\ been\ sorted\ alphabetically\ by\ name\r\n
+comment3.params=inventoryList
+comment3.target=java.util.ArrayList\ numSort(java.util.ArrayList)
+comment3.text=\r\n\ Sorts\ an\ ArrayList\ of\ objects\ of\ type\ BikePart\ by\ their\ partnumber\r\n\ @param\ inventoryList\ an\ ArrayList<BikePart>\ to\ be\ sorted\r\n\ @return\ an\ ArrayList<BikePart>\ that\ has\ been\ sorted\ by\ number\r\n
+numComments=4
