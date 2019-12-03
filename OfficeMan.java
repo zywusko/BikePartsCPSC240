@@ -8,16 +8,17 @@ import java.util.*;
  * @version (a version number or a date)
  */
 public class OfficeMan extends LoginAccount {
+
+    ReaderWriter readWrite = new ReaderWriter("readWrite");
+    ReaderWriter rw = new ReaderWriter();
+    BikePart bp = new BikePart();
+    SalesAssoc sa = new SalesAssoc();
     public double SAsalary;
     public int startDate;
     public int endDate;
 
-    public OfficeMan(){
-
-    }
-
-    public OfficeMan(String name, String pass, String first, String last, String email) {
-        super(name, pass, first, last, email);
+    public OfficeMan(String type, String name, String pass, String first, String last, String email) {
+        super(type, name, pass, first, last, email);
     }
 
     public String accountOptions() {
@@ -51,12 +52,39 @@ public class OfficeMan extends LoginAccount {
         }
     }
     public void OrderPart() {
-
+        ArrayList<BikePart> currentInventory = new ArrayList<BikePart>(10);
+        currentInventory.addAll(readWrite.readFromFile("WarehouseDB.txt"));
+        Menu m = new Menu();
+        int minimum = 2;
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("What part quantity (by name) would you like to check?");
+        String answer = scnr.next();
+        int found = 0;
+        for (int z = 0; z < currentInventory.size(); z++)
+        {
+            if (currentInventory.get(z).getName().equals(answer))
+            {
+                found ++;
+                }
+            if((bp.getQuantity() <= minimum + 1)){
+                System.out.println("Item is below or near minimum. Ordering additional parts.");
+                String response = scnr.next();
+                if(response == "yes"){
+                    for(int i = bp.getQuantity(); i < minimum + 2; ++i){
+                        bp.quantityUp();
+                    }
+                }
+        }
+            }
     }
-    public void SalesCommision(String name, int startDate, int endDate) {
-        SalesAssoc sa = new SalesAssoc();
-        SAsalary = sa.totalSales * 0.15;
-        sa.name = name;
-
+    public double SalesCommision(String name, int startDate, int endDate) {
+        double payment = 0.0;
+        for(int i = startDate; i < endDate; ++i){
+            if(i == sa.selldate){
+                payment = sa.getSales(i) + sa.getSales(i-1);
+            }
+            SAsalary = payment * 0.15;
+        }
+        return SAsalary;
     }
 }
